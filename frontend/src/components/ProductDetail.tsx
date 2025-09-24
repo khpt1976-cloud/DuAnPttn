@@ -49,6 +49,34 @@ const ProductImage = styled.img`
   object-fit: cover;
   border-radius: 10px;
   box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  transition: opacity 0.3s ease;
+`;
+
+const ImagePlaceholder = styled.div`
+  width: 100%;
+  height: 400px;
+  background: #f5f5f5;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #999;
+  font-size: 1.1rem;
+  border: 2px dashed #ddd;
+`;
+
+const LoadingSpinner = styled.div`
+  width: 40px;
+  height: 40px;
+  border: 4px solid #f3f3f3;
+  border-top: 4px solid #6c7b3a;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
 `;
 
 const HotLabel = styled.div`
@@ -239,6 +267,8 @@ const ProductDetail: React.FC = () => {
   const [product, setProduct] = useState<ProductDetailType | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const [imageLoading, setImageLoading] = useState(true);
+  const [imageError, setImageError] = useState(false);
 
   useEffect(() => {
     const fetchProduct = async () => {
@@ -249,6 +279,9 @@ const ProductDetail: React.FC = () => {
       }
 
       try {
+        // Reset image states when loading new product
+        setImageLoading(true);
+        setImageError(false);
         const productData = await getProductById(parseInt(id));
         setProduct(productData);
       } catch (err) {
@@ -293,7 +326,26 @@ const ProductDetail: React.FC = () => {
 
       <ProductContainer>
         <ImageSection>
-          <ProductImage src={`http://localhost:12000${product.image}`} alt={product.name} />
+          {imageLoading && !imageError && (
+            <ImagePlaceholder>
+              <LoadingSpinner />
+            </ImagePlaceholder>
+          )}
+          {imageError && (
+            <ImagePlaceholder>
+              ❌ Không thể tải hình ảnh
+            </ImagePlaceholder>
+          )}
+          <ProductImage 
+            src={`http://localhost:12000${product.image}`} 
+            alt={product.name}
+            onLoad={() => setImageLoading(false)}
+            onError={() => {
+              setImageLoading(false);
+              setImageError(true);
+            }}
+            style={{ display: imageLoading || imageError ? 'none' : 'block' }}
+          />
           <HotLabel>HOT</HotLabel>
         </ImageSection>
 
