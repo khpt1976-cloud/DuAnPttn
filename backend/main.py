@@ -15,8 +15,8 @@ app.add_middleware(
         "http://localhost:3000", 
         "http://localhost:12000", 
         "http://localhost:12001",
-        "https://work-1-lmouaxdsbafulfbx.prod-runtime.all-hands.dev",
-        "https://work-2-lmouaxdsbafulfbx.prod-runtime.all-hands.dev"
+        "https://work-1-bhtgleriouvsdcvo.prod-runtime.all-hands.dev",
+        "https://work-2-bhtgleriouvsdcvo.prod-runtime.all-hands.dev"
     ],
     allow_credentials=True,
     allow_methods=["*"],
@@ -60,7 +60,7 @@ sample_products = [
     {
         "id": 1,
         "title": "Võng Xếp Ban Mai Inox Kiểu VIP",
-        "image": "/api/images/product1.jpg",
+        "image": "/static/images/product1.jpg",
         "price": "1.150.000đ",
         "original_price": "1.210.000đ",
         "rating": 5,
@@ -69,7 +69,7 @@ sample_products = [
     {
         "id": 2,
         "title": "Võng Xếp Duy Phương Khung Inox Phi 27",
-        "image": "/api/images/product2.jpg",
+        "image": "/static/images/product2.jpg",
         "price": "780.000đ",
         "original_price": "950.000đ",
         "rating": 5,
@@ -78,7 +78,7 @@ sample_products = [
     {
         "id": 3,
         "title": "Võng Xếp Chấn Thái Sơn Vuông 40",
-        "image": "/api/images/product1.jpg",
+        "image": "/static/images/product1.jpg",
         "price": "1.050.000đ",
         "original_price": "1.155.000đ",
         "rating": 5,
@@ -87,7 +87,7 @@ sample_products = [
     {
         "id": 4,
         "title": "Võng Xếp Duy Lợi Khung Thép Cỡ Lớn",
-        "image": "/api/images/product2.jpg",
+        "image": "/static/images/product2.jpg",
         "price": "1.548.000đ",
         "original_price": "1.720.000đ",
         "rating": 5,
@@ -96,7 +96,7 @@ sample_products = [
     {
         "id": 13,
         "title": "Võng Xếp Minh Hà Premium Inox 304",
-        "image": "/api/images/product3.jpg",
+        "image": "/static/images/product3.jpg",
         "price": "1.350.000đ",
         "original_price": "1.500.000đ",
         "rating": 5,
@@ -105,7 +105,7 @@ sample_products = [
     {
         "id": 14,
         "title": "Võng Xếp Gia Đình Cỡ Đại",
-        "image": "/api/images/product1.jpg",
+        "image": "/static/images/product1.jpg",
         "price": "1.680.000đ",
         "original_price": "1.850.000đ",
         "rating": 5,
@@ -114,7 +114,7 @@ sample_products = [
     {
         "id": 15,
         "title": "Võng Xếp Cho Bé An Toàn",
-        "image": "/api/images/product2.jpg",
+        "image": "/static/images/product2.jpg",
         "price": "650.000đ",
         "original_price": "750.000đ",
         "rating": 5,
@@ -123,7 +123,7 @@ sample_products = [
     {
         "id": 16,
         "title": "Võng Xếp Du Lịch Gấp Gọn",
-        "image": "/api/images/product3.jpg",
+        "image": "/static/images/product3.jpg",
         "price": "580.000đ",
         "original_price": "680.000đ",
         "rating": 5,
@@ -132,7 +132,7 @@ sample_products = [
     {
         "id": 50,
         "title": "Võng Xếp Cao Cấp Nhập Khẩu",
-        "image": "/api/images/product1.jpg",
+        "image": "/static/images/product1.jpg",
         "price": "1.850.000đ",
         "original_price": "2.200.000đ",
         "rating": 5,
@@ -141,7 +141,7 @@ sample_products = [
     {
         "id": 51,
         "title": "Võng Xếp Thể Thao Outdoor",
-        "image": "/api/images/product2.jpg",
+        "image": "/static/images/product2.jpg",
         "price": "920.000đ",
         "original_price": "1.150.000đ",
         "rating": 5,
@@ -151,7 +151,7 @@ sample_products = [
     {
         "id": 5,
         "title": "Rèm Cửa Chống Nắng Cao Cấp",
-        "image": "/api/images/product3.jpg",
+        "image": "/static/images/product3.jpg",
         "price": "450.000đ",
         "original_price": "600.000đ",
         "rating": 5,
@@ -160,7 +160,7 @@ sample_products = [
     {
         "id": 6,
         "title": "Màn Cửa Sổ Chống Muỗi Inox",
-        "image": "/api/images/product1.jpg",
+        "image": "/static/images/product1.jpg",
         "price": "320.000đ",
         "original_price": "450.000đ",
         "rating": 5,
@@ -169,7 +169,7 @@ sample_products = [
     {
         "id": 7,
         "title": "Rèm Cuốn Tự Động Cao Cấp",
-        "image": "/api/images/product2.jpg",
+        "image": "/static/images/product2.jpg",
         "price": "850.000đ",
         "original_price": "1.200.000đ",
         "rating": 5,
@@ -178,7 +178,7 @@ sample_products = [
     {
         "id": 17,
         "title": "Rèm Vải Cao Cấp Chống UV",
-        "image": "/api/images/product3.jpg",
+        "image": "/static/images/product3.jpg",
         "price": "680.000đ",
         "original_price": "850.000đ",
         "rating": 5,
@@ -187,7 +187,7 @@ sample_products = [
     {
         "id": 18,
         "title": "Màn Nhựa PVC Trong Suốt",
-        "image": "/api/images/product1.jpg",
+        "image": "/static/images/product1.jpg",
         "price": "280.000đ",
         "original_price": "350.000đ",
         "rating": 5,
@@ -196,7 +196,7 @@ sample_products = [
     {
         "id": 19,
         "title": "Rèm Tre Tự Nhiên Cao Cấp",
-        "image": "/api/images/product2.jpg",
+        "image": "/static/images/product2.jpg",
         "price": "520.000đ",
         "original_price": "650.000đ",
         "rating": 5,
@@ -205,7 +205,7 @@ sample_products = [
     {
         "id": 52,
         "title": "Rèm Cửa Sổ Chống Tia UV",
-        "image": "/api/images/product3.jpg",
+        "image": "/static/images/product3.jpg",
         "price": "380.000đ",
         "original_price": "480.000đ",
         "rating": 5,
@@ -214,7 +214,7 @@ sample_products = [
     {
         "id": 53,
         "title": "Màn Cửa Lưới Chống Côn Trùng",
-        "image": "/api/images/product1.jpg",
+        "image": "/static/images/product1.jpg",
         "price": "290.000đ",
         "original_price": "380.000đ",
         "rating": 5,
@@ -224,7 +224,7 @@ sample_products = [
     {
         "id": 8,
         "title": "Giá Phơi Đồ Inox 3 Tầng Cao Cấp",
-        "image": "/api/images/product1.jpg",
+        "image": "/static/images/product1.jpg",
         "price": "680.000đ",
         "original_price": "850.000đ",
         "rating": 5,
@@ -233,7 +233,7 @@ sample_products = [
     {
         "id": 9,
         "title": "Giá Phơi Đồ Thông Minh Gấp Gọn",
-        "image": "/api/images/product2.jpg",
+        "image": "/static/images/product2.jpg",
         "price": "420.000đ",
         "original_price": "550.000đ",
         "rating": 5,
@@ -242,7 +242,7 @@ sample_products = [
     {
         "id": 20,
         "title": "Giá Phơi Đồ Treo Tường Tiết Kiệm",
-        "image": "/api/images/product3.jpg",
+        "image": "/static/images/product3.jpg",
         "price": "350.000đ",
         "original_price": "450.000đ",
         "rating": 5,
@@ -251,7 +251,7 @@ sample_products = [
     {
         "id": 21,
         "title": "Giá Phơi Đồ Lắp Ráp Đa Năng",
-        "image": "/api/images/product1.jpg",
+        "image": "/static/images/product1.jpg",
         "price": "580.000đ",
         "original_price": "720.000đ",
         "rating": 5,
@@ -260,7 +260,7 @@ sample_products = [
     {
         "id": 22,
         "title": "Giá Phơi Đồ Ngoài Trời Chống Gỉ",
-        "image": "/api/images/product2.jpg",
+        "image": "/static/images/product2.jpg",
         "price": "750.000đ",
         "original_price": "950.000đ",
         "rating": 5,
@@ -269,7 +269,7 @@ sample_products = [
     {
         "id": 54,
         "title": "Giá Phơi Đồ Thông Minh Điều Khiển",
-        "image": "/api/images/product3.jpg",
+        "image": "/static/images/product3.jpg",
         "price": "1.250.000đ",
         "original_price": "1.550.000đ",
         "rating": 5,
@@ -278,7 +278,7 @@ sample_products = [
     {
         "id": 55,
         "title": "Giá Phơi Đồ Gỗ Tự Nhiên",
-        "image": "/api/images/product1.jpg",
+        "image": "/static/images/product1.jpg",
         "price": "680.000đ",
         "original_price": "850.000đ",
         "rating": 5,
@@ -287,7 +287,7 @@ sample_products = [
     {
         "id": 56,
         "title": "Giá Phơi Đồ Mini Trong Nhà",
-        "image": "/api/images/product2.jpg",
+        "image": "/static/images/product2.jpg",
         "price": "320.000đ",
         "original_price": "420.000đ",
         "rating": 5,
@@ -297,7 +297,7 @@ sample_products = [
     {
         "id": 10,
         "title": "Bộ Bàn Ghế Xếp Gọn Gia Đình",
-        "image": "/api/images/product1.jpg",
+        "image": "/static/images/product1.jpg",
         "price": "1.250.000đ",
         "original_price": "1.500.000đ",
         "rating": 5,
@@ -306,7 +306,7 @@ sample_products = [
     {
         "id": 11,
         "title": "Ghế Xếp Thư Giãn Cao Cấp",
-        "image": "/api/images/product2.jpg",
+        "image": "/static/images/product2.jpg",
         "price": "650.000đ",
         "original_price": "800.000đ",
         "rating": 5,
@@ -315,7 +315,7 @@ sample_products = [
     {
         "id": 23,
         "title": "Bàn Xếp Gọn Đa Năng",
-        "image": "/api/images/product3.jpg",
+        "image": "/static/images/product3.jpg",
         "price": "480.000đ",
         "original_price": "600.000đ",
         "rating": 5,
@@ -324,7 +324,7 @@ sample_products = [
     {
         "id": 24,
         "title": "Ghế Xếp Inox Chống Gỉ",
-        "image": "/api/images/product1.jpg",
+        "image": "/static/images/product1.jpg",
         "price": "380.000đ",
         "original_price": "480.000đ",
         "rating": 5,
@@ -333,7 +333,7 @@ sample_products = [
     {
         "id": 25,
         "title": "Bộ Bàn Ghế Picnic Gia Đình",
-        "image": "/api/images/product2.jpg",
+        "image": "/static/images/product2.jpg",
         "price": "1.850.000đ",
         "original_price": "2.200.000đ",
         "rating": 5,
@@ -342,7 +342,7 @@ sample_products = [
     {
         "id": 26,
         "title": "Ghế Xếp Văn Phòng Ergonomic",
-        "image": "/api/images/product3.jpg",
+        "image": "/static/images/product3.jpg",
         "price": "920.000đ",
         "original_price": "1.150.000đ",
         "rating": 5,
@@ -351,7 +351,7 @@ sample_products = [
     {
         "id": 57,
         "title": "Bàn Xếp Gọn Cao Cấp Nhập Khẩu",
-        "image": "/api/images/product1.jpg",
+        "image": "/static/images/product1.jpg",
         "price": "1.280.000đ",
         "original_price": "1.580.000đ",
         "rating": 5,
@@ -360,7 +360,7 @@ sample_products = [
     {
         "id": 58,
         "title": "Ghế Xếp Thư Giãn Massage",
-        "image": "/api/images/product2.jpg",
+        "image": "/static/images/product2.jpg",
         "price": "1.850.000đ",
         "original_price": "2.300.000đ",
         "rating": 5,
@@ -370,7 +370,7 @@ sample_products = [
     {
         "id": 12,
         "title": "Giá Treo Đồ Đa Năng Inox",
-        "image": "/api/images/product3.jpg",
+        "image": "/static/images/product3.jpg",
         "price": "380.000đ",
         "original_price": "480.000đ",
         "rating": 5,
@@ -379,7 +379,7 @@ sample_products = [
     {
         "id": 27,
         "title": "Giá Treo Quần Áo Di Động",
-        "image": "/api/images/product1.jpg",
+        "image": "/static/images/product1.jpg",
         "price": "320.000đ",
         "original_price": "420.000đ",
         "rating": 5,
@@ -388,7 +388,7 @@ sample_products = [
     {
         "id": 28,
         "title": "Giá Treo Đồ Gắn Tường",
-        "image": "/api/images/product2.jpg",
+        "image": "/static/images/product2.jpg",
         "price": "250.000đ",
         "original_price": "320.000đ",
         "rating": 5,
@@ -397,7 +397,7 @@ sample_products = [
     {
         "id": 29,
         "title": "Giá Treo Đồ Cao Cấp 4 Tầng",
-        "image": "/api/images/product3.jpg",
+        "image": "/static/images/product3.jpg",
         "price": "580.000đ",
         "original_price": "720.000đ",
         "rating": 5,
@@ -406,7 +406,7 @@ sample_products = [
     {
         "id": 30,
         "title": "Giá Treo Đồ Thông Minh Xoay 360",
-        "image": "/api/images/product1.jpg",
+        "image": "/static/images/product1.jpg",
         "price": "450.000đ",
         "original_price": "550.000đ",
         "rating": 5,
@@ -415,7 +415,7 @@ sample_products = [
     {
         "id": 31,
         "title": "Giá Treo Đồ Gỗ Tự Nhiên",
-        "image": "/api/images/product2.jpg",
+        "image": "/static/images/product2.jpg",
         "price": "680.000đ",
         "original_price": "850.000đ",
         "rating": 5,
@@ -424,7 +424,7 @@ sample_products = [
     {
         "id": 32,
         "title": "Giá Treo Đồ Mini Để Bàn",
-        "image": "/api/images/product3.jpg",
+        "image": "/static/images/product3.jpg",
         "price": "180.000đ",
         "original_price": "250.000đ",
         "rating": 5,
@@ -433,7 +433,7 @@ sample_products = [
     {
         "id": 33,
         "title": "Giá Treo Đồ Đứng Cao Cấp",
-        "image": "/api/images/product1.jpg",
+        "image": "/static/images/product1.jpg",
         "price": "750.000đ",
         "original_price": "950.000đ",
         "rating": 5,
@@ -443,7 +443,7 @@ sample_products = [
     {
         "id": 34,
         "title": "Võng Xếp Giảm Giá Sốc 50%",
-        "image": "/api/images/product2.jpg",
+        "image": "/static/images/product2.jpg",
         "price": "590.000đ",
         "original_price": "1.180.000đ",
         "rating": 5,
@@ -452,7 +452,7 @@ sample_products = [
     {
         "id": 35,
         "title": "Rèm Cửa Thanh Lý Giá Rẻ",
-        "image": "/api/images/product3.jpg",
+        "image": "/static/images/product3.jpg",
         "price": "299.000đ",
         "original_price": "599.000đ",
         "rating": 5,
@@ -461,7 +461,7 @@ sample_products = [
     {
         "id": 36,
         "title": "Giá Phơi Đồ Outlet Sale",
-        "image": "/api/images/product1.jpg",
+        "image": "/static/images/product1.jpg",
         "price": "399.000đ",
         "original_price": "799.000đ",
         "rating": 5,
@@ -470,7 +470,7 @@ sample_products = [
     {
         "id": 37,
         "title": "Bàn Ghế Combo Giá Sốc",
-        "image": "/api/images/product2.jpg",
+        "image": "/static/images/product2.jpg",
         "price": "999.000đ",
         "original_price": "1.999.000đ",
         "rating": 5,
@@ -479,7 +479,7 @@ sample_products = [
     {
         "id": 38,
         "title": "Võng Xếp Hàng Trưng Bày",
-        "image": "/api/images/product3.jpg",
+        "image": "/static/images/product3.jpg",
         "price": "450.000đ",
         "original_price": "900.000đ",
         "rating": 5,
@@ -488,7 +488,7 @@ sample_products = [
     {
         "id": 39,
         "title": "Rèm Màn Cuối Mùa Giảm 60%",
-        "image": "/api/images/product1.jpg",
+        "image": "/static/images/product1.jpg",
         "price": "240.000đ",
         "original_price": "600.000đ",
         "rating": 5,
@@ -497,7 +497,7 @@ sample_products = [
     {
         "id": 40,
         "title": "Giá Treo Đồ Flash Sale",
-        "image": "/api/images/product2.jpg",
+        "image": "/static/images/product2.jpg",
         "price": "199.000đ",
         "original_price": "399.000đ",
         "rating": 5,
@@ -506,7 +506,7 @@ sample_products = [
     {
         "id": 41,
         "title": "Bàn Ghế Thanh Lý Kho",
-        "image": "/api/images/product3.jpg",
+        "image": "/static/images/product3.jpg",
         "price": "799.000đ",
         "original_price": "1.599.000đ",
         "rating": 5,
@@ -516,7 +516,7 @@ sample_products = [
     {
         "id": 42,
         "title": "Đệm Ngồi Cao Su Non",
-        "image": "/api/images/product1.jpg",
+        "image": "/static/images/product1.jpg",
         "price": "350.000đ",
         "original_price": "450.000đ",
         "rating": 5,
@@ -525,7 +525,7 @@ sample_products = [
     {
         "id": 43,
         "title": "Gối Ôm Cao Cấp Memory Foam",
-        "image": "/api/images/product2.jpg",
+        "image": "/static/images/product2.jpg",
         "price": "280.000đ",
         "original_price": "380.000đ",
         "rating": 5,
@@ -534,7 +534,7 @@ sample_products = [
     {
         "id": 44,
         "title": "Chăn Điều Hòa Mùa Hè",
-        "image": "/api/images/product3.jpg",
+        "image": "/static/images/product3.jpg",
         "price": "420.000đ",
         "original_price": "550.000đ",
         "rating": 5,
@@ -543,7 +543,7 @@ sample_products = [
     {
         "id": 45,
         "title": "Ga Trải Giường Cotton 100%",
-        "image": "/api/images/product1.jpg",
+        "image": "/static/images/product1.jpg",
         "price": "320.000đ",
         "original_price": "420.000đ",
         "rating": 5,
@@ -552,7 +552,7 @@ sample_products = [
     {
         "id": 46,
         "title": "Vỏ Gối Lụa Tơ Tằm",
-        "image": "/api/images/product2.jpg",
+        "image": "/static/images/product2.jpg",
         "price": "180.000đ",
         "original_price": "250.000đ",
         "rating": 5,
@@ -561,7 +561,7 @@ sample_products = [
     {
         "id": 47,
         "title": "Nệm Cao Su Thiên Nhiên",
-        "image": "/api/images/product3.jpg",
+        "image": "/static/images/product3.jpg",
         "price": "2.500.000đ",
         "original_price": "3.200.000đ",
         "rating": 5,
@@ -570,7 +570,7 @@ sample_products = [
     {
         "id": 48,
         "title": "Bộ Chăn Ga Gối Cao Cấp",
-        "image": "/api/images/product1.jpg",
+        "image": "/static/images/product1.jpg",
         "price": "850.000đ",
         "original_price": "1.100.000đ",
         "rating": 5,
@@ -579,7 +579,7 @@ sample_products = [
     {
         "id": 49,
         "title": "Khăn Trải Giường Nhung",
-        "image": "/api/images/product2.jpg",
+        "image": "/static/images/product2.jpg",
         "price": "220.000đ",
         "original_price": "320.000đ",
         "rating": 5,
@@ -833,7 +833,7 @@ async def search_products(q: str):
     results = [p for p in sample_products if q.lower() in p["title"].lower()]
     return {"query": q, "results": results, "total": len(results)}
 
-@app.get("/api/images/{image_name}")
+@app.get("/static/images/{image_name}")
 async def get_image(image_name: str):
     """Serve hình ảnh sản phẩm"""
     image_path = f"static/images/{image_name}"

@@ -167,25 +167,7 @@ const NavLink = styled(Link)`
   }
 `;
 
-const NavLinkExternal = styled.a`
-  color: white;
-  text-decoration: none;
-  font-weight: 500;
-  padding: 1rem 1.5rem;
-  font-size: 0.9rem;
-  text-transform: uppercase;
-  transition: background-color 0.3s;
-  border-right: 1px solid rgba(255,255,255,0.1);
-  display: block;
 
-  &:hover {
-    background-color: rgba(255,255,255,0.1);
-  }
-
-  &:last-child {
-    border-right: none;
-  }
-`;
 
 const Header: React.FC = () => {
   return (
@@ -222,13 +204,13 @@ const Header: React.FC = () => {
       <NavigationBar>
         <Navigation>
           <NavLink to="/">TRANG CHỦ</NavLink>
-          <NavLinkExternal href="#vong-xep">VÕNG XẾP</NavLinkExternal>
-          <NavLinkExternal href="#rem-man">RÈM - MÀN</NavLinkExternal>
-          <NavLinkExternal href="#gia-phoi">GIÁ PHƠI ĐỒ</NavLinkExternal>
-          <NavLinkExternal href="#gia-treo">GIÁ TREO ĐỒ</NavLinkExternal>
-          <NavLinkExternal href="#ban-ghe">BÀN GHẾ</NavLinkExternal>
-          <NavLinkExternal href="#giam-gia">GIẢM GIÁ HOT</NavLinkExternal>
-          <NavLinkExternal href="#san-pham-khac">SẢN PHẨM KHÁC</NavLinkExternal>
+          <NavLink to="/danh-muc/vong-xep">VÕNG XẾP</NavLink>
+          <NavLink to="/danh-muc/rem-man">RÈM - MÀN</NavLink>
+          <NavLink to="/danh-muc/gia-phoi">GIÁ PHƠI ĐỒ</NavLink>
+          <NavLink to="/danh-muc/gia-treo">GIÁ TREO ĐỒ</NavLink>
+          <NavLink to="/danh-muc/ban-ghe">BÀN GHẾ</NavLink>
+          <NavLink to="/danh-muc/giam-gia">GIẢM GIÁ HOT</NavLink>
+          <NavLink to="/danh-muc/san-pham-khac">SẢN PHẨM KHÁC</NavLink>
           <NavLink to="/lien-he">LIÊN HỆ</NavLink>
         </Navigation>
       </NavigationBar>

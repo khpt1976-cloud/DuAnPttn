@@ -337,7 +337,7 @@ const ProductDetail: React.FC = () => {
             </ImagePlaceholder>
           )}
           <ProductImage 
-            src={`http://localhost:12000${product.image}`} 
+            src={`https://work-1-bhtgleriouvsdcvo.prod-runtime.all-hands.dev${product.image}`} 
             alt={product.name}
             onLoad={() => setImageLoading(false)}
             onError={() => {
