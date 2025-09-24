@@ -2,9 +2,6 @@ import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import ProductCard from './ProductCard';
 import { apiService, Category } from '../services/api';
-import product1 from '../assets/images/product1.jpg';
-import product2 from '../assets/images/product2.jpg';
-import product3 from '../assets/images/product3.jpg';
 
 const GridContainer = styled.div`
   max-width: 1200px;
@@ -171,7 +168,7 @@ const ProductGrid: React.FC = () => {
             products: [
               {
                 id: 1,
-                image: product1,
+                image: "/static/images/product1.jpg",
                 title: "Võng Xếp Ban Mai Inox Kiểu VIP",
                 price: "1.150.000đ",
                 original_price: "1.210.000đ",
@@ -180,7 +177,7 @@ const ProductGrid: React.FC = () => {
               },
               {
                 id: 2,
-                image: product2,
+                image: "/static/images/product2.jpg",
                 title: "Võng Xếp Duy Phương Khung Inox Phi 27",
                 price: "780.000đ",
                 original_price: "950.000đ",
@@ -189,7 +186,7 @@ const ProductGrid: React.FC = () => {
               },
               {
                 id: 3,
-                image: product1,
+                image: "/static/images/product1.jpg",
                 title: "Võng Xếp Chấn Thái Sơn Vuông 40",
                 price: "1.050.000đ",
                 original_price: "1.155.000đ",
@@ -198,7 +195,7 @@ const ProductGrid: React.FC = () => {
               },
               {
                 id: 4,
-                image: product2,
+                image: "/static/images/product2.jpg",
                 title: "Võng Xếp Duy Lợi Khung Thép Cỡ Lớn",
                 price: "1.548.000đ",
                 original_price: "1.720.000đ",
@@ -214,7 +211,7 @@ const ProductGrid: React.FC = () => {
             products: [
               {
                 id: 5,
-                image: product3,
+                image: "/static/images/product3.jpg",
                 title: "Rèm Cửa Chống Nắng Cao Cấp",
                 price: "450.000đ",
                 original_price: "600.000đ",
@@ -223,7 +220,7 @@ const ProductGrid: React.FC = () => {
               },
               {
                 id: 6,
-                image: product1,
+                image: "/static/images/product1.jpg",
                 title: "Màn Cửa Sổ Chống Muỗi Inox",
                 price: "320.000đ",
                 original_price: "450.000đ",
@@ -232,7 +229,7 @@ const ProductGrid: React.FC = () => {
               },
               {
                 id: 7,
-                image: product2,
+                image: "/static/images/product2.jpg",
                 title: "Rèm Cuốn Tự Động Cao Cấp",
                 price: "850.000đ",
                 original_price: "1.200.000đ",
@@ -241,7 +238,7 @@ const ProductGrid: React.FC = () => {
               },
               {
                 id: 17,
-                image: product3,
+                image: "/static/images/product3.jpg",
                 title: "Rèm Vải Cao Cấp Chống UV",
                 price: "680.000đ",
                 original_price: "850.000đ",
@@ -266,13 +263,7 @@ const ProductGrid: React.FC = () => {
     fetchCategories();
   }, []);
 
-  const getProductImage = (product: any) => {
-    // Map API image paths to local images for demo
-    if (product.image?.includes('product1')) return product1;
-    if (product.image?.includes('product2')) return product2;
-    if (product.image?.includes('product3')) return product3;
-    return product.image || product1;
-  };
+
 
   const nextSlide = (categoryId: number, totalProducts: number) => {
     setCurrentSlides(prev => {
@@ -339,7 +330,7 @@ const ProductGrid: React.FC = () => {
                 <ProductCard
                   key={productIndex}
                   id={product.id}
-                  image={getProductImage(product)}
+                  image={product.image}
                   title={product.title}
                   price={product.price}
                   originalPrice={product.original_price}
