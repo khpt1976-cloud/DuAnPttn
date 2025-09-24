@@ -79,7 +79,7 @@ const Footer: React.FC = () => {
           <FooterSection>
             <h3>Cửa Hàng Minh Hà</h3>
             <ContactInfo>
-              <PhoneNumber href="tel:0984183176">📞 0984.183.176</PhoneNumber>
+              <PhoneNumber href="tel:0974876168">📞 0974.876.168</PhoneNumber>
               <p>Chuyên võng, rèm, màn, giá phơi, bàn ghế</p>
             </ContactInfo>
           </FooterSection>

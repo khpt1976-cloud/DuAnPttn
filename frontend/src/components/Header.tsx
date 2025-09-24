@@ -120,7 +120,7 @@ const Header: React.FC = () => {
       <TopBar>
         <TopBarContent>
           <ContactInfo>
-            <span>📞 0984.183.176 - Cửa Hàng Minh Hà</span>
+            <span>📞 0974.876.168 - Cửa Hàng Minh Hà</span>
             <span>📍 417 Ngô Gia Tự - Hải An - Hải Phòng</span>
           </ContactInfo>
           <SearchContainer>
