@@ -6,7 +6,7 @@ import product1 from '../assets/images/product1.jpg';
 import product2 from '../assets/images/product2.jpg';
 import product3 from '../assets/images/product3.jpg';
 
-const GridContainer = styled.section`
+const GridContainer = styled.div`
   max-width: 1200px;
   margin: 0 auto;
   padding: 2rem 1rem;
@@ -34,7 +34,9 @@ const CategoryHeader = styled.div`
   padding: 0.8rem 1.5rem;
   margin-bottom: 1rem;
   border-radius: 5px;
-  text-align: center;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 `;
 
 const CategoryTitle = styled.h2`
@@ -44,11 +46,47 @@ const CategoryTitle = styled.h2`
   text-transform: uppercase;
 `;
 
+const NavigationButtons = styled.div`
+  display: flex;
+  gap: 0.5rem;
+`;
+
+const NavButton = styled.button`
+  background: rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  color: white;
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  transition: all 0.3s ease;
+  
+  &:hover {
+    background: rgba(255, 255, 255, 0.3);
+    transform: scale(1.1);
+  }
+  
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    transform: none;
+  }
+`;
+
+const CarouselContainer = styled.div`
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 1rem;
+`;
+
 const Grid = styled.div`
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 1rem;
-  margin-bottom: 1rem;
   
   @media (max-width: 1024px) {
     grid-template-columns: repeat(3, 1fr);
@@ -71,10 +109,9 @@ const ViewAllButton = styled.button`
   border: none;
   padding: 0.8rem 2rem;
   border-radius: 5px;
-  font-size: 1rem;
-  font-weight: 500;
   cursor: pointer;
-  transition: all 0.3s ease;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
   
   &:hover {
     background: #1a3009;
@@ -82,10 +119,8 @@ const ViewAllButton = styled.button`
 `;
 
 const LoadingSpinner = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 200px;
+  text-align: center;
+  padding: 2rem;
   font-size: 1.2rem;
   color: #666;
 `;
@@ -93,17 +128,42 @@ const LoadingSpinner = styled.div`
 const ProductGrid: React.FC = () => {
   const [categories, setCategories] = useState<Category[]>([]);
   const [loading, setLoading] = useState(true);
+  const [currentSlides, setCurrentSlides] = useState<{[key: number]: number}>({});
+
+  const getItemsPerView = () => {
+    if (window.innerWidth <= 480) return 1;
+    if (window.innerWidth <= 768) return 2;
+    if (window.innerWidth <= 1024) return 3;
+    return 4;
+  };
+
+  const [itemsPerView, setItemsPerView] = useState(4);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setItemsPerView(getItemsPerView());
+    };
+
+    handleResize();
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
   useEffect(() => {
     const fetchCategories = async () => {
       try {
-        setLoading(true);
         const data = await apiService.getCategories();
         setCategories(data);
-      } catch (err) {
-        console.error('Error fetching categories:', err);
-        // Fallback to static data
-        setCategories([
+        // Initialize slide positions
+        const initialSlides: {[key: number]: number} = {};
+        data.forEach(category => {
+          initialSlides[category.id] = 0;
+        });
+        setCurrentSlides(initialSlides);
+      } catch (error) {
+        console.error('Error fetching categories:', error);
+        // Fallback data nếu API lỗi
+        const fallbackData = [
           {
             id: 1,
             name: "VÕNG XẾP CAO CẤP",
@@ -163,7 +223,7 @@ const ProductGrid: React.FC = () => {
               },
               {
                 id: 6,
-                image: product3,
+                image: product1,
                 title: "Màn Cửa Sổ Chống Muỗi Inox",
                 price: "320.000đ",
                 original_price: "450.000đ",
@@ -172,7 +232,7 @@ const ProductGrid: React.FC = () => {
               },
               {
                 id: 7,
-                image: product3,
+                image: product2,
                 title: "Rèm Cuốn Tự Động Cao Cấp",
                 price: "850.000đ",
                 original_price: "1.200.000đ",
@@ -180,17 +240,24 @@ const ProductGrid: React.FC = () => {
                 category: "rem-man"
               },
               {
-                id: 8,
-                image: product1,
-                title: "Giá Phơi Đồ Inox 3 Tầng Cao Cấp",
+                id: 17,
+                image: product3,
+                title: "Rèm Vải Cao Cấp Chống UV",
                 price: "680.000đ",
                 original_price: "850.000đ",
                 rating: 5,
-                category: "gia-phoi"
+                category: "rem-man"
               }
             ]
           }
-        ]);
+        ];
+        setCategories(fallbackData);
+        // Initialize slide positions for fallback data
+        const initialSlides: {[key: number]: number} = {};
+        fallbackData.forEach(category => {
+          initialSlides[category.id] = 0;
+        });
+        setCurrentSlides(initialSlides);
       } finally {
         setLoading(false);
       }
@@ -205,6 +272,33 @@ const ProductGrid: React.FC = () => {
     if (product.image?.includes('product2')) return product2;
     if (product.image?.includes('product3')) return product3;
     return product.image || product1;
+  };
+
+  const nextSlide = (categoryId: number, totalProducts: number) => {
+    setCurrentSlides(prev => {
+      const currentSlide = prev[categoryId] || 0;
+      const maxSlide = Math.max(0, totalProducts - itemsPerView);
+      const newSlide = Math.min(currentSlide + itemsPerView, maxSlide);
+      return { ...prev, [categoryId]: newSlide };
+    });
+  };
+
+  const prevSlide = (categoryId: number) => {
+    setCurrentSlides(prev => {
+      const currentSlide = prev[categoryId] || 0;
+      const newSlide = Math.max(0, currentSlide - itemsPerView);
+      return { ...prev, [categoryId]: newSlide };
+    });
+  };
+
+  const canGoNext = (categoryId: number, totalProducts: number) => {
+    const currentSlide = currentSlides[categoryId] || 0;
+    return currentSlide + itemsPerView < totalProducts;
+  };
+
+  const canGoPrev = (categoryId: number) => {
+    const currentSlide = currentSlides[categoryId] || 0;
+    return currentSlide > 0;
   };
 
   if (loading) {
@@ -222,19 +316,37 @@ const ProductGrid: React.FC = () => {
         <CategorySection key={index}>
           <CategoryHeader>
             <CategoryTitle>{category.name}</CategoryTitle>
+            <NavigationButtons>
+              <NavButton
+                onClick={() => prevSlide(category.id)}
+                disabled={!canGoPrev(category.id)}
+              >
+                ‹
+              </NavButton>
+              <NavButton
+                onClick={() => nextSlide(category.id, category.products.length)}
+                disabled={!canGoNext(category.id, category.products.length)}
+              >
+                ›
+              </NavButton>
+            </NavigationButtons>
           </CategoryHeader>
-          <Grid>
-            {category.products.map((product, productIndex) => (
-              <ProductCard
-                key={productIndex}
-                image={getProductImage(product)}
-                title={product.title}
-                price={product.price}
-                originalPrice={product.original_price}
-                rating={product.rating}
-              />
-            ))}
-          </Grid>
+          <CarouselContainer>
+            <Grid>
+              {category.products
+                .slice(currentSlides[category.id] || 0, (currentSlides[category.id] || 0) + itemsPerView)
+                .map((product, productIndex) => (
+                <ProductCard
+                  key={productIndex}
+                  image={getProductImage(product)}
+                  title={product.title}
+                  price={product.price}
+                  originalPrice={product.original_price}
+                  rating={product.rating}
+                />
+              ))}
+            </Grid>
+          </CarouselContainer>
           <ViewAllButton>Xem tất cả</ViewAllButton>
         </CategorySection>
       ))}
