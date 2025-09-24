@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
-import { getProducts } from '../services/api';
+import { getCategory } from '../services/api';
 import ProductCard from './ProductCard';
 
 interface Product {
@@ -222,13 +222,18 @@ const CategoryPage: React.FC = () => {
     const fetchProducts = async () => {
       try {
         setLoading(true);
-        const allProducts = await getProducts();
-        const filteredProducts = allProducts.filter((product: Product) => 
-          product.category === category
-        );
-        setProducts(filteredProducts);
+        console.log('Fetching products for category:', category);
+        
+        // Gọi API để lấy category và products của category đó
+        const categoryData = await getCategory(category!);
+        console.log('Category data received:', categoryData);
+        console.log('Products count:', categoryData.products?.length || 0);
+        
+        setProducts(categoryData.products || []);
       } catch (error) {
         console.error('Error fetching products:', error);
+        console.error('Error details:', error);
+        setProducts([]);
       } finally {
         setLoading(false);
       }
