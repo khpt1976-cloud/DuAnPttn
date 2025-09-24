@@ -8,7 +8,13 @@ app = FastAPI(title="Cửa Hàng Minh Hà API", description="API cho website C�
 # Cấu hình CORS
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:3000", "http://localhost:12000", "http://localhost:12001"],
+    allow_origins=[
+        "http://localhost:3000", 
+        "http://localhost:12000", 
+        "http://localhost:12001",
+        "https://work-1-pvbqbmqnoiprzkcy.prod-runtime.all-hands.dev",
+        "https://work-2-pvbqbmqnoiprzkcy.prod-runtime.all-hands.dev"
+    ],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
@@ -372,4 +378,4 @@ async def search_products(q: str):
 
 if __name__ == "__main__":
     import uvicorn
-    uvicorn.run(app, host="0.0.0.0", port=8000)
+    uvicorn.run(app, host="0.0.0.0", port=12000)

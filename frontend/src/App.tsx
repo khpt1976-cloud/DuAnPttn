@@ -1,16 +1,23 @@
 import React from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Header from './components/Header';
-import ProductGrid from './components/ProductGrid';
+import Home from './components/Home';
+import Contact from './components/Contact';
 import Footer from './components/Footer';
 import './App.css';
 
 function App() {
   return (
-    <div className="App">
-      <Header />
-      <ProductGrid />
-      <Footer />
-    </div>
+    <Router>
+      <div className="App">
+        <Header />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/lien-he" element={<Contact />} />
+        </Routes>
+        <Footer />
+      </div>
+    </Router>
   );
 }
 

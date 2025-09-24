@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import logo from '../assets/images/logo.png';
 
@@ -95,7 +96,7 @@ const Navigation = styled.nav`
   justify-content: center;
 `;
 
-const NavLink = styled.a`
+const NavLink = styled(Link)`
   color: white;
   text-decoration: none;
   font-weight: 500;
@@ -104,6 +105,27 @@ const NavLink = styled.a`
   text-transform: uppercase;
   transition: background-color 0.3s;
   border-right: 1px solid rgba(255,255,255,0.1);
+  display: block;
+
+  &:hover {
+    background-color: rgba(255,255,255,0.1);
+  }
+
+  &:last-child {
+    border-right: none;
+  }
+`;
+
+const NavLinkExternal = styled.a`
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+  padding: 1rem 1.5rem;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  transition: background-color 0.3s;
+  border-right: 1px solid rgba(255,255,255,0.1);
+  display: block;
 
   &:hover {
     background-color: rgba(255,255,255,0.1);
@@ -140,14 +162,15 @@ const Header: React.FC = () => {
 
       <NavigationBar>
         <Navigation>
-          <NavLink href="#vong-xep">VÕNG XẾP</NavLink>
-          <NavLink href="#rem-man">RÈM - MÀN</NavLink>
-          <NavLink href="#gia-phoi">GIÁ PHƠI ĐỒ</NavLink>
-          <NavLink href="#gia-treo">GIÁ TREO ĐỒ</NavLink>
-          <NavLink href="#ban-ghe">BÀN GHẾ</NavLink>
-          <NavLink href="#giam-gia">GIẢM GIÁ HOT</NavLink>
-          <NavLink href="#san-pham-khac">SẢN PHẨM KHÁC</NavLink>
-          <NavLink href="#lien-he">LIÊN HỆ</NavLink>
+          <NavLink to="/">TRANG CHỦ</NavLink>
+          <NavLinkExternal href="#vong-xep">VÕNG XẾP</NavLinkExternal>
+          <NavLinkExternal href="#rem-man">RÈM - MÀN</NavLinkExternal>
+          <NavLinkExternal href="#gia-phoi">GIÁ PHƠI ĐỒ</NavLinkExternal>
+          <NavLinkExternal href="#gia-treo">GIÁ TREO ĐỒ</NavLinkExternal>
+          <NavLinkExternal href="#ban-ghe">BÀN GHẾ</NavLinkExternal>
+          <NavLinkExternal href="#giam-gia">GIẢM GIÁ HOT</NavLinkExternal>
+          <NavLinkExternal href="#san-pham-khac">SẢN PHẨM KHÁC</NavLinkExternal>
+          <NavLink to="/lien-he">LIÊN HỆ</NavLink>
         </Navigation>
       </NavigationBar>
     </HeaderContainer>
