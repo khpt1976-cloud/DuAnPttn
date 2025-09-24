@@ -9,6 +9,23 @@ const api = axios.create({
   },
 });
 
+// Utility function to get full image URL
+export const getImageUrl = (imagePath: string): string => {
+  if (!imagePath) {
+    return '';
+  }
+  if (imagePath.startsWith('http')) {
+    return imagePath; // Already a full URL
+  }
+  if (imagePath.startsWith('/static/')) {
+    return `${API_BASE_URL}${imagePath}`;
+  }
+  if (imagePath.startsWith('static/')) {
+    return `${API_BASE_URL}/${imagePath}`;
+  }
+  return imagePath; // Local import or other format
+};
+
 export interface Product {
   id: number;
   title: string;

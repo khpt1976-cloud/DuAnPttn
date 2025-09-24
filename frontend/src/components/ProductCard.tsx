@@ -2,6 +2,7 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import starIcon from '../assets/icons/star_5.png';
+import { getImageUrl } from '../services/api';
 
 interface ProductCardProps {
   id: number;
@@ -118,7 +119,7 @@ const ProductCard: React.FC<ProductCardProps> = ({
     <Card onClick={handleClick}>
       <HotLabel>HOT</HotLabel>
       <ImageContainer>
-        <ProductImage src={image} alt={title} />
+        <ProductImage src={getImageUrl(image)} alt={title} />
       </ImageContainer>
       <Content>
         <Title>{title}</Title>

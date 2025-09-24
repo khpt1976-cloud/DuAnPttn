@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import starIcon from '../assets/icons/star_5.png';
-import { getProductById, ProductDetail as ProductDetailType } from '../services/api';
+import { getProductById, ProductDetail as ProductDetailType, getImageUrl } from '../services/api';
 
 const Container = styled.div`
   max-width: 1200px;
@@ -337,7 +337,7 @@ const ProductDetail: React.FC = () => {
             </ImagePlaceholder>
           )}
           <ProductImage 
-            src={`https://work-1-bhtgleriouvsdcvo.prod-runtime.all-hands.dev${product.image}`} 
+            src={getImageUrl(product.image)} 
             alt={product.name}
             onLoad={() => setImageLoading(false)}
             onError={() => {
