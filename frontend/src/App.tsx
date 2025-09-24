@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Header from './components/Header';
 import Home from './components/Home';
 import Contact from './components/Contact';
+import ProductDetail from './components/ProductDetail';
 import Footer from './components/Footer';
 import FloatingContact from './components/FloatingContact';
 import './App.css';
@@ -15,6 +16,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/lien-he" element={<Contact />} />
+          <Route path="/san-pham/:id" element={<ProductDetail />} />
         </Routes>
         <Footer />
         <FloatingContact />

@@ -19,6 +19,25 @@ export interface Product {
   category: string;
 }
 
+export interface ProductDetail {
+  id: number;
+  name: string;
+  image: string;
+  price?: string;
+  originalPrice?: string;
+  rating: number;
+  category: string;
+  description: string;
+  features: string[];
+  specifications: {
+    material?: string;
+    size?: string;
+    weight?: string;
+    color?: string;
+    warranty?: string;
+  };
+}
+
 export interface Category {
   id: number;
   name: string;
@@ -35,6 +54,12 @@ export const apiService = {
 
   // Lấy sản phẩm theo ID
   async getProduct(id: number): Promise<Product> {
+    const response = await api.get(`/api/products/${id}`);
+    return response.data;
+  },
+
+  // Lấy chi tiết sản phẩm theo ID
+  async getProductById(id: number): Promise<ProductDetail> {
     const response = await api.get(`/api/products/${id}`);
     return response.data;
   },
@@ -57,5 +82,8 @@ export const apiService = {
     return response.data;
   },
 };
+
+// Export individual functions for easier import
+export const { getProducts, getProduct, getProductById, getCategories, getCategory, searchProducts } = apiService;
 
 export default apiService;

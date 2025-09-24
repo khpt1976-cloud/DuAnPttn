@@ -338,6 +338,7 @@ const ProductGrid: React.FC = () => {
                 .map((product, productIndex) => (
                 <ProductCard
                   key={productIndex}
+                  id={product.id}
                   image={getProductImage(product)}
                   title={product.title}
                   price={product.price}

@@ -1,8 +1,10 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import starIcon from '../assets/icons/star_5.png';
 
 interface ProductCardProps {
+  id: number;
   image: string;
   title: string;
   price?: string;
@@ -99,14 +101,21 @@ const Price = styled.span`
 `;
 
 const ProductCard: React.FC<ProductCardProps> = ({
+  id,
   image,
   title,
   price,
   originalPrice,
   rating = 5
 }) => {
+  const navigate = useNavigate();
+
+  const handleClick = () => {
+    navigate(`/san-pham/${id}`);
+  };
+
   return (
-    <Card>
+    <Card onClick={handleClick}>
       <HotLabel>HOT</HotLabel>
       <ImageContainer>
         <ProductImage src={image} alt={title} />

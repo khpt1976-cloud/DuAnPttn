@@ -1,7 +1,10 @@
-from fastapi import FastAPI
+from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.responses import FileResponse
+from fastapi.staticfiles import StaticFiles
 from typing import List, Optional
 from pydantic import BaseModel
+import os
 
 app = FastAPI(title="Cửa Hàng Minh Hà API", description="API cho website Cửa Hàng Minh Hà", version="1.0.0")
 
@@ -12,13 +15,16 @@ app.add_middleware(
         "http://localhost:3000", 
         "http://localhost:12000", 
         "http://localhost:12001",
-        "https://work-1-wyykoilsziuqjcjn.prod-runtime.all-hands.dev",
-        "https://work-2-wyykoilsziuqjcjn.prod-runtime.all-hands.dev"
+        "https://work-1-lmouaxdsbafulfbx.prod-runtime.all-hands.dev",
+        "https://work-2-lmouaxdsbafulfbx.prod-runtime.all-hands.dev"
     ],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+# Mount static files
+app.mount("/static", StaticFiles(directory="static"), name="static")
 
 # Models
 class Product(BaseModel):
@@ -29,6 +35,18 @@ class Product(BaseModel):
     original_price: Optional[str] = None
     rating: int = 5
     category: str
+
+class ProductDetail(BaseModel):
+    id: int
+    name: str
+    image: str
+    price: Optional[str] = None
+    originalPrice: Optional[str] = None
+    rating: int = 5
+    category: str
+    description: str
+    features: List[str]
+    specifications: dict
 
 class Category(BaseModel):
     id: int
@@ -624,13 +642,177 @@ async def get_products():
     """Lấy tất cả sản phẩm"""
     return sample_products
 
-@app.get("/api/products/{product_id}", response_model=Product)
+@app.get("/api/products/{product_id}", response_model=ProductDetail)
 async def get_product(product_id: int):
-    """Lấy thông tin sản phẩm theo ID"""
+    """Lấy thông tin chi tiết sản phẩm theo ID"""
     product = next((p for p in sample_products if p["id"] == product_id), None)
     if not product:
-        return {"error": "Không tìm thấy sản phẩm"}
-    return product
+        from fastapi import HTTPException
+        raise HTTPException(status_code=404, detail="Không tìm thấy sản phẩm")
+    
+    # Tạo thông tin chi tiết cho sản phẩm
+    detailed_product = {
+        "id": product["id"],
+        "name": product["title"],
+        "image": product["image"],
+        "price": product["price"],
+        "originalPrice": product.get("original_price"),
+        "rating": product["rating"],
+        "category": product["category"],
+        "description": get_product_description(product["id"], product["title"]),
+        "features": get_product_features(product["id"], product["category"]),
+        "specifications": get_product_specifications(product["id"], product["category"])
+    }
+    
+    return detailed_product
+
+def get_product_description(product_id: int, title: str) -> str:
+    """Tạo mô tả sản phẩm dựa trên ID và tên"""
+    descriptions = {
+        "vong-xep": f"{title} là sản phẩm chất lượng cao, được thiết kế với công nghệ hiện đại và chất liệu bền bỉ. Sản phẩm mang lại sự thoải mái tối đa cho người sử dụng với khả năng gấp gọn tiện lợi, phù hợp cho mọi không gian sống.",
+        "rem-man": f"{title} được sản xuất từ chất liệu cao cấp, có khả năng chống nắng và bảo vệ không gian sống của bạn. Thiết kế hiện đại, dễ lắp đặt và bảo trì, mang lại hiệu quả sử dụng lâu dài.",
+        "gia-phoi": f"{title} với thiết kế thông minh, tiết kiệm không gian và tối ưu hóa việc phơi đồ. Chất liệu inox cao cấp chống gỉ sét, đảm bảo độ bền và thẩm mỹ cho ngôi nhà của bạn.",
+        "ban-ghe": f"{title} được thiết kế ergonomic, mang lại sự thoải mái tối đa. Chất liệu cao cấp, khung chắc chắn và có thể gấp gọn dễ dàng, phù hợp cho nhiều mục đích sử dụng khác nhau.",
+        "gia-treo": f"{title} giúp tối ưu hóa không gian lưu trữ với thiết kế thông minh và hiện đại. Chất liệu bền bỉ, khả năng chịu tải cao và dễ dàng lắp đặt.",
+        "giam-gia": f"{title} - Sản phẩm chất lượng cao với mức giá ưu đãi đặc biệt. Đây là cơ hội tuyệt vời để sở hữu sản phẩm chính hãng với giá tốt nhất.",
+        "san-pham-khac": f"{title} là sản phẩm bổ sung hoàn hảo cho ngôi nhà của bạn. Chất lượng đảm bảo, thiết kế tinh tế và mang lại giá trị sử dụng cao."
+    }
+    
+    # Tìm category của sản phẩm
+    product = next((p for p in sample_products if p["id"] == product_id), None)
+    if product:
+        category = product["category"]
+        return descriptions.get(category, f"{title} là sản phẩm chất lượng cao từ Cửa Hàng Minh Hà.")
+    
+    return f"{title} là sản phẩm chất lượng cao từ Cửa Hàng Minh Hà."
+
+def get_product_features(product_id: int, category: str) -> List[str]:
+    """Tạo danh sách tính năng dựa trên category"""
+    features_map = {
+        "vong-xep": [
+            "Khung inox cao cấp chống gỉ sét",
+            "Vải bền bỉ, thoáng mát",
+            "Gấp gọn dễ dàng, tiết kiệm không gian",
+            "Thiết kế ergonomic thoải mái",
+            "Trọng lượng nhẹ, dễ di chuyển",
+            "Bảo hành chính hãng 12 tháng"
+        ],
+        "rem-man": [
+            "Chất liệu chống UV hiệu quả",
+            "Dễ dàng lắp đặt và tháo rời",
+            "Thiết kế hiện đại, thẩm mỹ cao",
+            "Khả năng chống thấm nước",
+            "Bảo trì đơn giản",
+            "Đa dạng màu sắc và kích thước"
+        ],
+        "gia-phoi": [
+            "Inox 304 cao cấp chống gỉ",
+            "Thiết kế thông minh, tối ưu không gian",
+            "Khả năng chịu tải cao",
+            "Gấp gọn tiện lợi khi không sử dụng",
+            "Phù hợp cả trong nhà và ngoài trời",
+            "Lắp đặt đơn giản, không cần dụng cụ phức tạp"
+        ],
+        "ban-ghe": [
+            "Thiết kế ergonomic thoải mái",
+            "Chất liệu cao cấp, bền bỉ",
+            "Gấp gọn dễ dàng, tiết kiệm không gian",
+            "Khung chắc chắn, ổn định",
+            "Phù hợp nhiều mục đích sử dụng",
+            "Trọng lượng nhẹ, dễ di chuyển"
+        ],
+        "gia-treo": [
+            "Thiết kế đa năng, tiết kiệm không gian",
+            "Chất liệu bền bỉ, chịu tải cao",
+            "Lắp đặt dễ dàng, không cần khoan tường",
+            "Phù hợp nhiều loại quần áo",
+            "Thiết kế hiện đại, thẩm mỹ",
+            "Có thể điều chỉnh chiều cao"
+        ],
+        "giam-gia": [
+            "Sản phẩm chính hãng, chất lượng đảm bảo",
+            "Giá ưu đãi đặc biệt, tiết kiệm chi phí",
+            "Bảo hành đầy đủ như sản phẩm thường",
+            "Số lượng có hạn, cơ hội hiếm có",
+            "Phù hợp cho mọi gia đình",
+            "Giao hàng nhanh chóng"
+        ],
+        "san-pham-khac": [
+            "Chất lượng cao, an toàn cho sức khỏe",
+            "Thiết kế tinh tế, hiện đại",
+            "Dễ sử dụng và bảo quản",
+            "Phù hợp cho mọi lứa tuổi",
+            "Giá cả hợp lý, chất lượng tốt",
+            "Bảo hành và hỗ trợ tận tình"
+        ]
+    }
+    
+    return features_map.get(category, [
+        "Chất lượng cao, bền bỉ",
+        "Thiết kế hiện đại, thẩm mỹ",
+        "Dễ sử dụng và bảo trì",
+        "Giá cả hợp lý",
+        "Bảo hành chính hãng"
+    ])
+
+def get_product_specifications(product_id: int, category: str) -> dict:
+    """Tạo thông số kỹ thuật dựa trên category"""
+    specs_map = {
+        "vong-xep": {
+            "material": "Khung inox 304, vải polyester cao cấp",
+            "size": "Dài 190cm x Rộng 60cm x Cao 35cm",
+            "weight": "3.5 - 5.5 kg",
+            "color": "Đa dạng màu sắc",
+            "warranty": "12 tháng chính hãng"
+        },
+        "rem-man": {
+            "material": "Vải polyester chống UV, khung nhôm",
+            "size": "Tùy chỉnh theo yêu cầu",
+            "weight": "1.5 - 3.0 kg/m²",
+            "color": "Nhiều màu sắc lựa chọn",
+            "warranty": "24 tháng"
+        },
+        "gia-phoi": {
+            "material": "Inox 304 cao cấp",
+            "size": "Cao 150-180cm, có thể điều chỉnh",
+            "weight": "8 - 15 kg",
+            "color": "Inox nguyên bản",
+            "warranty": "36 tháng chống gỉ"
+        },
+        "ban-ghe": {
+            "material": "Khung thép/inox, mặt gỗ/nhựa cao cấp",
+            "size": "Đa dạng kích thước",
+            "weight": "5 - 20 kg",
+            "color": "Nhiều màu sắc",
+            "warranty": "18 tháng"
+        },
+        "gia-treo": {
+            "material": "Inox/thép sơn tĩnh điện",
+            "size": "Cao 120-180cm, rộng 40-80cm",
+            "weight": "3 - 8 kg",
+            "color": "Trắng, đen, inox",
+            "warranty": "24 tháng"
+        },
+        "giam-gia": {
+            "material": "Tùy theo từng sản phẩm",
+            "size": "Đa dạng",
+            "weight": "Tùy sản phẩm",
+            "color": "Nhiều lựa chọn",
+            "warranty": "12-24 tháng"
+        },
+        "san-pham-khac": {
+            "material": "Chất liệu cao cấp, an toàn",
+            "size": "Đa dạng kích thước",
+            "weight": "Tùy sản phẩm",
+            "color": "Nhiều màu sắc",
+            "warranty": "12 tháng"
+        }
+    }
+    
+    return specs_map.get(category, {
+        "material": "Chất liệu cao cấp",
+        "warranty": "12 tháng chính hãng"
+    })
 
 @app.get("/api/categories", response_model=List[Category])
 async def get_categories():
@@ -650,6 +832,20 @@ async def search_products(q: str):
     """Tìm kiếm sản phẩm"""
     results = [p for p in sample_products if q.lower() in p["title"].lower()]
     return {"query": q, "results": results, "total": len(results)}
+
+@app.get("/api/images/{image_name}")
+async def get_image(image_name: str):
+    """Serve hình ảnh sản phẩm"""
+    image_path = f"static/images/{image_name}"
+    if os.path.exists(image_path):
+        return FileResponse(image_path)
+    else:
+        # Trả về hình ảnh mặc định nếu không tìm thấy
+        default_path = "static/images/product1.jpg"
+        if os.path.exists(default_path):
+            return FileResponse(default_path)
+        else:
+            raise HTTPException(status_code=404, detail="Image not found")
 
 if __name__ == "__main__":
     import uvicorn
