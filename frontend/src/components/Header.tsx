@@ -1,7 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
-import logo from '../assets/images/logo.png';
 
 const HeaderContainer = styled.header`
   background: #2d5016;
@@ -64,10 +63,62 @@ const MainHeaderContent = styled.div`
   padding: 0 1rem;
 `;
 
-const Logo = styled.img`
-  height: 80px;
-  width: auto;
+const CustomLogo = styled.div`
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   margin-bottom: 0.5rem;
+`;
+
+const LogoIcon = styled.div`
+  width: 80px;
+  height: 80px;
+  background: linear-gradient(135deg, #2d5016 0%, #4a7c59 100%);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 1rem;
+  box-shadow: 0 4px 15px rgba(45, 80, 22, 0.3);
+  position: relative;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    width: 70px;
+    height: 70px;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+  }
+`;
+
+const LogoText = styled.div`
+  color: white;
+  font-size: 24px;
+  font-weight: bold;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  letter-spacing: 1px;
+`;
+
+const BrandName = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+`;
+
+const MainBrandText = styled.div`
+  font-size: 28px;
+  font-weight: bold;
+  color: #2d5016;
+  letter-spacing: 2px;
+  margin-bottom: 2px;
+`;
+
+const SubBrandText = styled.div`
+  font-size: 14px;
+  color: #666;
+  font-weight: 500;
+  letter-spacing: 1px;
 `;
 
 const Slogan = styled.h1`
@@ -154,8 +205,16 @@ const Header: React.FC = () => {
 
       <MainHeader>
         <MainHeaderContent>
-          <Logo src={logo} alt="Cửa Hàng Minh Hà Logo" />
-          <Slogan>CỬA HÀNG MINH HÀ<br />VÕNG - RÈM - MÀN - GIÁ PHƠI - BÀN GHẾ</Slogan>
+          <CustomLogo>
+            <LogoIcon>
+              <LogoText>MH</LogoText>
+            </LogoIcon>
+            <BrandName>
+              <MainBrandText>MINH HÀ</MainBrandText>
+              <SubBrandText>CỬA HÀNG UY TÍN</SubBrandText>
+            </BrandName>
+          </CustomLogo>
+          <Slogan>VÕNG - RÈM - MÀN - GIÁ PHƠI - BÀN GHẾ</Slogan>
           <SubSlogan>Chất lượng cao - Giá cả hợp lý - Bảo hành chính hãng</SubSlogan>
         </MainHeaderContent>
       </MainHeader>

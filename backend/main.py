@@ -12,8 +12,8 @@ app.add_middleware(
         "http://localhost:3000", 
         "http://localhost:12000", 
         "http://localhost:12001",
-        "https://work-1-pvbqbmqnoiprzkcy.prod-runtime.all-hands.dev",
-        "https://work-2-pvbqbmqnoiprzkcy.prod-runtime.all-hands.dev"
+        "https://work-1-fewblihqnnirrlef.prod-runtime.all-hands.dev",
+        "https://work-2-fewblihqnnirrlef.prod-runtime.all-hands.dev"
     ],
     allow_credentials=True,
     allow_methods=["*"],
@@ -111,6 +111,24 @@ sample_products = [
         "rating": 5,
         "category": "vong-xep"
     },
+    {
+        "id": 50,
+        "title": "Võng Xếp Cao Cấp Nhập Khẩu",
+        "image": "/api/images/product1.jpg",
+        "price": "1.850.000đ",
+        "original_price": "2.200.000đ",
+        "rating": 5,
+        "category": "vong-xep"
+    },
+    {
+        "id": 51,
+        "title": "Võng Xếp Thể Thao Outdoor",
+        "image": "/api/images/product2.jpg",
+        "price": "920.000đ",
+        "original_price": "1.150.000đ",
+        "rating": 5,
+        "category": "vong-xep"
+    },
     # Rèm màn (6 sản phẩm)
     {
         "id": 5,
@@ -166,6 +184,24 @@ sample_products = [
         "rating": 5,
         "category": "rem-man"
     },
+    {
+        "id": 52,
+        "title": "Rèm Cửa Sổ Chống Tia UV",
+        "image": "/api/images/product3.jpg",
+        "price": "380.000đ",
+        "original_price": "480.000đ",
+        "rating": 5,
+        "category": "rem-man"
+    },
+    {
+        "id": 53,
+        "title": "Màn Cửa Lưới Chống Côn Trùng",
+        "image": "/api/images/product1.jpg",
+        "price": "290.000đ",
+        "original_price": "380.000đ",
+        "rating": 5,
+        "category": "rem-man"
+    },
     # Giá phơi đồ (5 sản phẩm)
     {
         "id": 8,
@@ -209,6 +245,33 @@ sample_products = [
         "image": "/api/images/product2.jpg",
         "price": "750.000đ",
         "original_price": "950.000đ",
+        "rating": 5,
+        "category": "gia-phoi"
+    },
+    {
+        "id": 54,
+        "title": "Giá Phơi Đồ Thông Minh Điều Khiển",
+        "image": "/api/images/product3.jpg",
+        "price": "1.250.000đ",
+        "original_price": "1.550.000đ",
+        "rating": 5,
+        "category": "gia-phoi"
+    },
+    {
+        "id": 55,
+        "title": "Giá Phơi Đồ Gỗ Tự Nhiên",
+        "image": "/api/images/product1.jpg",
+        "price": "680.000đ",
+        "original_price": "850.000đ",
+        "rating": 5,
+        "category": "gia-phoi"
+    },
+    {
+        "id": 56,
+        "title": "Giá Phơi Đồ Mini Trong Nhà",
+        "image": "/api/images/product2.jpg",
+        "price": "320.000đ",
+        "original_price": "420.000đ",
         "rating": 5,
         "category": "gia-phoi"
     },
@@ -267,7 +330,25 @@ sample_products = [
         "rating": 5,
         "category": "ban-ghe"
     },
-    # Giá treo đồ (4 sản phẩm)
+    {
+        "id": 57,
+        "title": "Bàn Xếp Gọn Cao Cấp Nhập Khẩu",
+        "image": "/api/images/product1.jpg",
+        "price": "1.280.000đ",
+        "original_price": "1.580.000đ",
+        "rating": 5,
+        "category": "ban-ghe"
+    },
+    {
+        "id": 58,
+        "title": "Ghế Xếp Thư Giãn Massage",
+        "image": "/api/images/product2.jpg",
+        "price": "1.850.000đ",
+        "original_price": "2.300.000đ",
+        "rating": 5,
+        "category": "ban-ghe"
+    },
+    # Giá treo đồ (8 sản phẩm)
     {
         "id": 12,
         "title": "Giá Treo Đồ Đa Năng Inox",
@@ -303,6 +384,188 @@ sample_products = [
         "original_price": "720.000đ",
         "rating": 5,
         "category": "gia-treo"
+    },
+    {
+        "id": 30,
+        "title": "Giá Treo Đồ Thông Minh Xoay 360",
+        "image": "/api/images/product1.jpg",
+        "price": "450.000đ",
+        "original_price": "550.000đ",
+        "rating": 5,
+        "category": "gia-treo"
+    },
+    {
+        "id": 31,
+        "title": "Giá Treo Đồ Gỗ Tự Nhiên",
+        "image": "/api/images/product2.jpg",
+        "price": "680.000đ",
+        "original_price": "850.000đ",
+        "rating": 5,
+        "category": "gia-treo"
+    },
+    {
+        "id": 32,
+        "title": "Giá Treo Đồ Mini Để Bàn",
+        "image": "/api/images/product3.jpg",
+        "price": "180.000đ",
+        "original_price": "250.000đ",
+        "rating": 5,
+        "category": "gia-treo"
+    },
+    {
+        "id": 33,
+        "title": "Giá Treo Đồ Đứng Cao Cấp",
+        "image": "/api/images/product1.jpg",
+        "price": "750.000đ",
+        "original_price": "950.000đ",
+        "rating": 5,
+        "category": "gia-treo"
+    },
+    # Sản phẩm giảm giá hot (8 sản phẩm)
+    {
+        "id": 34,
+        "title": "Võng Xếp Giảm Giá Sốc 50%",
+        "image": "/api/images/product2.jpg",
+        "price": "590.000đ",
+        "original_price": "1.180.000đ",
+        "rating": 5,
+        "category": "giam-gia"
+    },
+    {
+        "id": 35,
+        "title": "Rèm Cửa Thanh Lý Giá Rẻ",
+        "image": "/api/images/product3.jpg",
+        "price": "299.000đ",
+        "original_price": "599.000đ",
+        "rating": 5,
+        "category": "giam-gia"
+    },
+    {
+        "id": 36,
+        "title": "Giá Phơi Đồ Outlet Sale",
+        "image": "/api/images/product1.jpg",
+        "price": "399.000đ",
+        "original_price": "799.000đ",
+        "rating": 5,
+        "category": "giam-gia"
+    },
+    {
+        "id": 37,
+        "title": "Bàn Ghế Combo Giá Sốc",
+        "image": "/api/images/product2.jpg",
+        "price": "999.000đ",
+        "original_price": "1.999.000đ",
+        "rating": 5,
+        "category": "giam-gia"
+    },
+    {
+        "id": 38,
+        "title": "Võng Xếp Hàng Trưng Bày",
+        "image": "/api/images/product3.jpg",
+        "price": "450.000đ",
+        "original_price": "900.000đ",
+        "rating": 5,
+        "category": "giam-gia"
+    },
+    {
+        "id": 39,
+        "title": "Rèm Màn Cuối Mùa Giảm 60%",
+        "image": "/api/images/product1.jpg",
+        "price": "240.000đ",
+        "original_price": "600.000đ",
+        "rating": 5,
+        "category": "giam-gia"
+    },
+    {
+        "id": 40,
+        "title": "Giá Treo Đồ Flash Sale",
+        "image": "/api/images/product2.jpg",
+        "price": "199.000đ",
+        "original_price": "399.000đ",
+        "rating": 5,
+        "category": "giam-gia"
+    },
+    {
+        "id": 41,
+        "title": "Bàn Ghế Thanh Lý Kho",
+        "image": "/api/images/product3.jpg",
+        "price": "799.000đ",
+        "original_price": "1.599.000đ",
+        "rating": 5,
+        "category": "giam-gia"
+    },
+    # Sản phẩm khác (8 sản phẩm)
+    {
+        "id": 42,
+        "title": "Đệm Ngồi Cao Su Non",
+        "image": "/api/images/product1.jpg",
+        "price": "350.000đ",
+        "original_price": "450.000đ",
+        "rating": 5,
+        "category": "san-pham-khac"
+    },
+    {
+        "id": 43,
+        "title": "Gối Ôm Cao Cấp Memory Foam",
+        "image": "/api/images/product2.jpg",
+        "price": "280.000đ",
+        "original_price": "380.000đ",
+        "rating": 5,
+        "category": "san-pham-khac"
+    },
+    {
+        "id": 44,
+        "title": "Chăn Điều Hòa Mùa Hè",
+        "image": "/api/images/product3.jpg",
+        "price": "420.000đ",
+        "original_price": "550.000đ",
+        "rating": 5,
+        "category": "san-pham-khac"
+    },
+    {
+        "id": 45,
+        "title": "Ga Trải Giường Cotton 100%",
+        "image": "/api/images/product1.jpg",
+        "price": "320.000đ",
+        "original_price": "420.000đ",
+        "rating": 5,
+        "category": "san-pham-khac"
+    },
+    {
+        "id": 46,
+        "title": "Vỏ Gối Lụa Tơ Tằm",
+        "image": "/api/images/product2.jpg",
+        "price": "180.000đ",
+        "original_price": "250.000đ",
+        "rating": 5,
+        "category": "san-pham-khac"
+    },
+    {
+        "id": 47,
+        "title": "Nệm Cao Su Thiên Nhiên",
+        "image": "/api/images/product3.jpg",
+        "price": "2.500.000đ",
+        "original_price": "3.200.000đ",
+        "rating": 5,
+        "category": "san-pham-khac"
+    },
+    {
+        "id": 48,
+        "title": "Bộ Chăn Ga Gối Cao Cấp",
+        "image": "/api/images/product1.jpg",
+        "price": "850.000đ",
+        "original_price": "1.100.000đ",
+        "rating": 5,
+        "category": "san-pham-khac"
+    },
+    {
+        "id": 49,
+        "title": "Khăn Trải Giường Nhung",
+        "image": "/api/images/product2.jpg",
+        "price": "220.000đ",
+        "original_price": "320.000đ",
+        "rating": 5,
+        "category": "san-pham-khac"
     }
 ]
 
@@ -336,6 +599,18 @@ categories_data = [
         "name": "Giá Treo Đồ",
         "slug": "gia-treo",
         "products": [p for p in sample_products if p["category"] == "gia-treo"]
+    },
+    {
+        "id": 6,
+        "name": "Giảm Giá Hot",
+        "slug": "giam-gia",
+        "products": [p for p in sample_products if p["category"] == "giam-gia"]
+    },
+    {
+        "id": 7,
+        "name": "Sản Phẩm Khác",
+        "slug": "san-pham-khac",
+        "products": [p for p in sample_products if p["category"] == "san-pham-khac"]
     }
 ]
 
