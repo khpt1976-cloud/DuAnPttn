@@ -12,6 +12,14 @@ const GridContainer = styled.section`
   padding: 2rem 1rem;
 `;
 
+const MainTitle = styled.h2`
+  text-align: center;
+  font-size: 2.2rem;
+  color: #2d5016;
+  margin-bottom: 3rem;
+  font-weight: bold;
+`;
+
 const CategorySection = styled.div`
   margin-bottom: 2rem;
 `;
@@ -205,6 +213,7 @@ const ProductGrid: React.FC = () => {
 
   return (
     <GridContainer>
+      <MainTitle>Sản Phẩm Nổi Bật - Võng Xếp & Nội Thất Gia Đình</MainTitle>
       {categories.map((category, index) => (
         <CategorySection key={index}>
           <CategoryHeader>
