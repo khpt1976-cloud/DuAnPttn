@@ -4,6 +4,7 @@ import Header from './components/Header';
 import Home from './components/Home';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
+import FloatingContact from './components/FloatingContact';
 import './App.css';
 
 function App() {
@@ -16,6 +17,7 @@ function App() {
           <Route path="/lien-he" element={<Contact />} />
         </Routes>
         <Footer />
+        <FloatingContact />
       </div>
     </Router>
   );

@@ -91,15 +91,15 @@ const HeroSection: React.FC = () => {
   return (
     <HeroContainer>
       <HeroContent>
-        <MainTitle>CHĂN - GA - GỐI - ĐỆM HÀN QUỐC CHÍNH HÃNG</MainTitle>
+        <MainTitle>VÕNG XẾP DUY LỢI - CHÍNH HÃNG UY TÍN</MainTitle>
         <Subtitle>
-          Chất lượng cao - Giá cả hợp lý - Bảo hành chính hãng
+          Võng xếp cao cấp - Giá cả hợp lý - Bảo hành chính hãng
         </Subtitle>
         
         <SearchSection>
           <SearchInput 
             type="text" 
-            placeholder="Tìm kiếm sản phẩm bạn cần..." 
+            placeholder="Tìm kiếm võng xếp, rèm màn, giá phơi..." 
           />
           <SearchButton>Tìm kiếm</SearchButton>
         </SearchSection>

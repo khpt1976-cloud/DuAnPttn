@@ -12,8 +12,8 @@ app.add_middleware(
         "http://localhost:3000", 
         "http://localhost:12000", 
         "http://localhost:12001",
-        "https://work-1-fewblihqnnirrlef.prod-runtime.all-hands.dev",
-        "https://work-2-fewblihqnnirrlef.prod-runtime.all-hands.dev"
+        "https://work-1-wyykoilsziuqjcjn.prod-runtime.all-hands.dev",
+        "https://work-2-wyykoilsziuqjcjn.prod-runtime.all-hands.dev"
     ],
     allow_credentials=True,
     allow_methods=["*"],
