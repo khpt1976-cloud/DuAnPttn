@@ -77,24 +77,26 @@ const Footer: React.FC = () => {
       <FooterContent>
         <FooterGrid>
           <FooterSection>
-            <h3>Thông tin liên hệ</h3>
+            <h3>Cửa Hàng Minh Hà</h3>
             <ContactInfo>
-              <PhoneNumber href="tel:0984725199">📞 0984 725 199</PhoneNumber>
-              <PhoneNumber href="tel:0984685283">📞 0984 685 283</PhoneNumber>
+              <PhoneNumber href="tel:0984183176">📞 0984.183.176</PhoneNumber>
+              <p>Chuyên võng, rèm, màn, giá phơi, bàn ghế</p>
             </ContactInfo>
           </FooterSection>
           
           <FooterSection>
-            <h3>Showroom 1</h3>
+            <h3>Địa chỉ cửa hàng</h3>
             <ShowroomInfo>
-              <p>📍 47 Ngô Gia Tự, Long Biên, Hà Nội</p>
+              <p>📍 417 Ngô Gia Tự</p>
+              <p>Hải An - Hải Phòng</p>
             </ShowroomInfo>
           </FooterSection>
           
           <FooterSection>
-            <h3>Showroom 2</h3>
+            <h3>Giờ mở cửa</h3>
             <ShowroomInfo>
-              <p>📍 270 Phố Huế, Hai Bà Trưng, Hà Nội</p>
+              <p>🕐 Thứ 2 - Chủ nhật: 8:00 - 20:00</p>
+              <p>📞 Tư vấn 24/7</p>
             </ShowroomInfo>
           </FooterSection>
           
@@ -108,7 +110,7 @@ const Footer: React.FC = () => {
         </FooterGrid>
         
         <Copyright>
-          <p>© 2025 Everon Vietnam. Thiết kế bởi IGITECH.VN</p>
+          <p>© 2025 Cửa Hàng Minh Hà - 417 Ngô Gia Tự, Hải An, Hải Phòng</p>
         </Copyright>
       </FooterContent>
     </FooterContainer>

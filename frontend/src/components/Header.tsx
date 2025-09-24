@@ -120,8 +120,8 @@ const Header: React.FC = () => {
       <TopBar>
         <TopBarContent>
           <ContactInfo>
-            <span>📞 1.270 Phố Huế - Hai Bà Trưng - Hà Nội</span>
-            <span>📞 2. 47 Ngô Gia Tự - Long Biên - Hà Nội</span>
+            <span>📞 0984.183.176 - Cửa Hàng Minh Hà</span>
+            <span>📍 417 Ngô Gia Tự - Hải An - Hải Phòng</span>
           </ContactInfo>
           <SearchContainer>
             <SearchInput type="text" placeholder="Nhập từ khóa..." />
@@ -132,22 +132,22 @@ const Header: React.FC = () => {
 
       <MainHeader>
         <MainHeaderContent>
-          <Logo src={logo} alt="Everon Logo" />
-          <Slogan>CHĂN - GA - GỐI - ĐỆM<br />HÀN QUỐC CHÍNH HÃNG</Slogan>
+          <Logo src={logo} alt="Cửa Hàng Minh Hà Logo" />
+          <Slogan>CỬA HÀNG MINH HÀ<br />VÕNG - RÈM - MÀN - GIÁ PHƠI - BÀN GHẾ</Slogan>
           <SubSlogan>Chất lượng cao - Giá cả hợp lý - Bảo hành chính hãng</SubSlogan>
         </MainHeaderContent>
       </MainHeader>
 
       <NavigationBar>
         <Navigation>
-          <NavLink href="#bo-everon">BỘ EVERON</NavLink>
-          <NavLink href="#everon-giam-gia">EVERON GIẢM GIÁ</NavLink>
-          <NavLink href="#dem-chan-ga">ĐỆM CHĂN GA EVERON</NavLink>
-          <NavLink href="#ruot-chan">RUỘT CHĂN EVERON</NavLink>
-          <NavLink href="#chan-goi">CHĂN GỐI EVERON</NavLink>
-          <NavLink href="#bo-gap-chan">BỘ GẤP CHĂN ANT NEST</NavLink>
+          <NavLink href="#vong-xep">VÕNG XẾP</NavLink>
+          <NavLink href="#rem-man">RÈM - MÀN</NavLink>
+          <NavLink href="#gia-phoi">GIÁ PHƠI ĐỒ</NavLink>
+          <NavLink href="#gia-treo">GIÁ TREO ĐỒ</NavLink>
+          <NavLink href="#ban-ghe">BÀN GHẾ</NavLink>
+          <NavLink href="#giam-gia">GIẢM GIÁ HOT</NavLink>
           <NavLink href="#san-pham-khac">SẢN PHẨM KHÁC</NavLink>
-          <NavLink href="#lien-he">LIÊN HỆ EVERON</NavLink>
+          <NavLink href="#lien-he">LIÊN HỆ</NavLink>
         </Navigation>
       </NavigationBar>
     </HeaderContainer>

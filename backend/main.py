@@ -3,7 +3,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from typing import List, Optional
 from pydantic import BaseModel
 
-app = FastAPI(title="Everon API", description="API cho website Everon", version="1.0.0")
+app = FastAPI(title="Cửa Hàng Minh Hà API", description="API cho website Cửa Hàng Minh Hà", version="1.0.0")
 
 # Cấu hình CORS
 app.add_middleware(
@@ -32,120 +32,158 @@ class Category(BaseModel):
 
 # Dữ liệu mẫu
 sample_products = [
+    # Võng xếp
     {
         "id": 1,
-        "title": "Bộ Everon Epm-22063",
+        "title": "Võng Xếp Ban Mai Inox Kiểu VIP",
         "image": "/api/images/product1.jpg",
-        "price": "1.200.000đ",
-        "original_price": "1.500.000đ",
+        "price": "1.150.000đ",
+        "original_price": "1.210.000đ",
         "rating": 5,
-        "category": "bo-2023"
+        "category": "vong-xep"
     },
     {
         "id": 2,
-        "title": "Bộ Everon EST-22031",
+        "title": "Võng Xếp Duy Phương Khung Inox Phi 27",
         "image": "/api/images/product2.jpg",
-        "price": "1.100.000đ",
-        "original_price": "1.400.000đ",
+        "price": "780.000đ",
+        "original_price": "950.000đ",
         "rating": 5,
-        "category": "bo-2023"
+        "category": "vong-xep"
     },
     {
         "id": 3,
-        "title": "Bộ Everon EPM-22062",
+        "title": "Võng Xếp Chấn Thái Sơn Vuông 40",
         "image": "/api/images/product1.jpg",
-        "price": "1.300.000đ",
-        "original_price": "1.600.000đ",
+        "price": "1.050.000đ",
+        "original_price": "1.155.000đ",
         "rating": 5,
-        "category": "bo-2023"
+        "category": "vong-xep"
     },
     {
         "id": 4,
-        "title": "Bộ Everon ESTR-23055",
+        "title": "Võng Xếp Duy Lợi Khung Thép Cỡ Lớn",
         "image": "/api/images/product2.jpg",
-        "price": "1.250.000đ",
-        "original_price": "1.550.000đ",
+        "price": "1.548.000đ",
+        "original_price": "1.720.000đ",
         "rating": 5,
-        "category": "bo-2023"
+        "category": "vong-xep"
     },
+    # Rèm màn
     {
         "id": 5,
-        "title": "Đệm Bông Ép Vỏ Gấm Everon",
+        "title": "Rèm Cửa Chống Nắng Cao Cấp",
         "image": "/api/images/product3.jpg",
-        "price": "2.500.000đ",
-        "original_price": "3.000.000đ",
+        "price": "450.000đ",
+        "original_price": "600.000đ",
         "rating": 5,
-        "category": "dem-bong-ep"
+        "category": "rem-man"
     },
     {
         "id": 6,
-        "title": "Đệm Đa Năng Everon Giảm 50%",
+        "title": "Màn Cửa Sổ Chống Muỗi Inox",
         "image": "/api/images/product3.jpg",
-        "price": "1.800.000đ",
-        "original_price": "3.600.000đ",
+        "price": "320.000đ",
+        "original_price": "450.000đ",
         "rating": 5,
-        "category": "dem-bong-ep"
+        "category": "rem-man"
     },
     {
         "id": 7,
-        "title": "Đệm Bông Ép Everon Vỏ Chần",
+        "title": "Rèm Cuốn Tự Động Cao Cấp",
         "image": "/api/images/product3.jpg",
-        "price": "2.200.000đ",
-        "original_price": "2.800.000đ",
+        "price": "850.000đ",
+        "original_price": "1.200.000đ",
         "rating": 5,
-        "category": "dem-bong-ep"
+        "category": "rem-man"
     },
+    # Giá phơi đồ
     {
         "id": 8,
-        "title": "Bộ Everon EPC 26016 - Lá Thu Đỏ",
+        "title": "Giá Phơi Đồ Inox 3 Tầng Cao Cấp",
         "image": "/api/images/product1.jpg",
-        "price": "1.400.000đ",
+        "price": "680.000đ",
+        "original_price": "850.000đ",
         "rating": 5,
-        "category": "bo-2026"
+        "category": "gia-phoi"
     },
     {
         "id": 9,
-        "title": "Bộ Everon ESTC-26007 - Cẩm Chướng Đỏ",
+        "title": "Giá Phơi Đồ Thông Minh Gấp Gọn",
         "image": "/api/images/product2.jpg",
-        "price": "1.350.000đ",
+        "price": "420.000đ",
+        "original_price": "550.000đ",
         "rating": 5,
-        "category": "bo-2026"
+        "category": "gia-phoi"
     },
+    # Bàn ghế
     {
         "id": 10,
-        "title": "Bộ Everon CPT 26201 - Vườn Thú Trên Mây",
+        "title": "Bộ Bàn Ghế Xếp Gọn Gia Đình",
         "image": "/api/images/product1.jpg",
-        "price": "1.500.000đ",
+        "price": "1.250.000đ",
+        "original_price": "1.500.000đ",
         "rating": 5,
-        "category": "bo-2026"
+        "category": "ban-ghe"
+    },
+    {
+        "id": 11,
+        "title": "Ghế Xếp Thư Giãn Cao Cấp",
+        "image": "/api/images/product2.jpg",
+        "price": "650.000đ",
+        "original_price": "800.000đ",
+        "rating": 5,
+        "category": "ban-ghe"
+    },
+    # Giá treo đồ
+    {
+        "id": 12,
+        "title": "Giá Treo Đồ Đa Năng Inox",
+        "image": "/api/images/product3.jpg",
+        "price": "380.000đ",
+        "original_price": "480.000đ",
+        "rating": 5,
+        "category": "gia-treo"
     }
 ]
 
 categories_data = [
     {
         "id": 1,
-        "name": "Bộ 2023 Giảm Sốc",
-        "slug": "bo-2023",
-        "products": [p for p in sample_products if p["category"] == "bo-2023"]
+        "name": "Võng Xếp Cao Cấp",
+        "slug": "vong-xep",
+        "products": [p for p in sample_products if p["category"] == "vong-xep"]
     },
     {
         "id": 2,
-        "name": "Đệm Bông Ép Everon",
-        "slug": "dem-bong-ep",
-        "products": [p for p in sample_products if p["category"] == "dem-bong-ep"]
+        "name": "Rèm Màn Chống Nắng",
+        "slug": "rem-man",
+        "products": [p for p in sample_products if p["category"] == "rem-man"]
     },
     {
         "id": 3,
-        "name": "Bộ Everon 2026",
-        "slug": "bo-2026",
-        "products": [p for p in sample_products if p["category"] == "bo-2026"]
+        "name": "Giá Phơi Đồ Thông Minh",
+        "slug": "gia-phoi",
+        "products": [p for p in sample_products if p["category"] == "gia-phoi"]
+    },
+    {
+        "id": 4,
+        "name": "Bàn Ghế Gia Đình",
+        "slug": "ban-ghe",
+        "products": [p for p in sample_products if p["category"] == "ban-ghe"]
+    },
+    {
+        "id": 5,
+        "name": "Giá Treo Đồ",
+        "slug": "gia-treo",
+        "products": [p for p in sample_products if p["category"] == "gia-treo"]
     }
 ]
 
 # API Endpoints
 @app.get("/")
 async def root():
-    return {"message": "Everon API đang hoạt động"}
+    return {"message": "Cửa Hàng Minh Hà API đang hoạt động"}
 
 @app.get("/api/products", response_model=List[Product])
 async def get_products():

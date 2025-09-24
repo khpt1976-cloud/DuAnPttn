@@ -94,87 +94,87 @@ const ProductGrid: React.FC = () => {
         setCategories([
           {
             id: 1,
-            name: "BỘ 2023 GIẢM SỐC",
-            slug: "bo-2023",
+            name: "VÕNG XẾP CAO CẤP",
+            slug: "vong-xep",
             products: [
               {
                 id: 1,
                 image: product1,
-                title: "BỘ EVERON EPM-22063",
-                price: "3.414.000 đ",
-                original_price: "4.517.000 đ",
+                title: "Võng Xếp Ban Mai Inox Kiểu VIP",
+                price: "1.150.000đ",
+                original_price: "1.210.000đ",
                 rating: 5,
-                category: "bo-2023"
+                category: "vong-xep"
               },
               {
                 id: 2,
                 image: product2,
-                title: "BỘ EVERON EST-22031",
-                price: "3.162.000 đ",
-                original_price: "4.217.000 đ",
+                title: "Võng Xếp Duy Phương Khung Inox Phi 27",
+                price: "780.000đ",
+                original_price: "950.000đ",
                 rating: 5,
-                category: "bo-2023"
+                category: "vong-xep"
               },
               {
                 id: 3,
                 image: product1,
-                title: "BỘ EVERON EPM-22062",
-                price: "3.300.000 đ",
-                original_price: "4.374.000 đ",
+                title: "Võng Xếp Chấn Thái Sơn Vuông 40",
+                price: "1.050.000đ",
+                original_price: "1.155.000đ",
                 rating: 5,
-                category: "bo-2023"
+                category: "vong-xep"
               },
               {
                 id: 4,
                 image: product2,
-                title: "BỘ EVERON ESTR-23055",
-                price: "1.199.000 đ",
-                original_price: "1.599.000 đ",
+                title: "Võng Xếp Duy Lợi Khung Thép Cỡ Lớn",
+                price: "1.548.000đ",
+                original_price: "1.720.000đ",
                 rating: 5,
-                category: "bo-2023"
+                category: "vong-xep"
               }
             ]
           },
           {
             id: 2,
-            name: "ĐỆM BÔNG ÉP EVERON",
-            slug: "dem-bong-ep",
+            name: "RÈM MÀN CHỐNG NẮNG",
+            slug: "rem-man",
             products: [
               {
                 id: 5,
                 image: product3,
-                title: "ĐỆM BÔNG ÉP VỎ GẤM EVERON",
-                price: "1.752.000 đ",
-                original_price: "2.190.000 đ",
+                title: "Rèm Cửa Chống Nắng Cao Cấp",
+                price: "450.000đ",
+                original_price: "600.000đ",
                 rating: 5,
-                category: "dem-bong-ep"
+                category: "rem-man"
               },
               {
                 id: 6,
                 image: product3,
-                title: "ĐỆM ĐA NĂNG EVERON GIẢM 50%",
-                price: "745.000 đ",
-                original_price: "1.490.000 đ",
+                title: "Màn Cửa Sổ Chống Muỗi Inox",
+                price: "320.000đ",
+                original_price: "450.000đ",
                 rating: 5,
-                category: "dem-bong-ep"
+                category: "rem-man"
               },
               {
                 id: 7,
                 image: product3,
-                title: "BẢNG GIÁ VỎ EVERON NĂM 2025",
-                price: "1.771.000 đ",
-                original_price: "2.214.000 đ",
+                title: "Rèm Cuốn Tự Động Cao Cấp",
+                price: "850.000đ",
+                original_price: "1.200.000đ",
                 rating: 5,
-                category: "dem-bong-ep"
+                category: "rem-man"
               },
               {
                 id: 8,
-                image: product3,
-                title: "ĐỆM BÔNG ÉP EVERON VỎ CHẦN",
-                price: "2.072.000 đ",
-                original_price: "2.590.000 đ",
+                image: product1,
+                title: "Giá Phơi Đồ Inox 3 Tầng Cao Cấp",
+                price: "680.000đ",
+                original_price: "850.000đ",
                 rating: 5,
-                category: "dem-bong-ep"
+                category: "gia-phoi"
               }
             ]
           }
