@@ -1,12 +1,49 @@
-from fastapi import FastAPI, HTTPException
+"""
+FastAPI Main Application for Admin Panel
+Entry point for the backend API server
+"""
+
+import os
+from fastapi import FastAPI, HTTPException, Request
 from fastapi.middleware.cors import CORSMiddleware
-from fastapi.responses import FileResponse
+from fastapi.middleware.trustedhost import TrustedHostMiddleware
+from fastapi.responses import JSONResponse, FileResponse
 from fastapi.staticfiles import StaticFiles
+from contextlib import asynccontextmanager
 from typing import List, Optional
 from pydantic import BaseModel
-import os
 
-app = FastAPI(title="Cửa Hàng Minh Hà API", description="API cho website Cửa Hàng Minh Hà", version="1.0.0")
+# Import API routers
+from api.v1.auth import router as auth_router
+
+# Import database
+from database import create_tables
+
+@asynccontextmanager
+async def lifespan(app: FastAPI):
+    """
+    Application lifespan events
+    """
+    # Startup
+    print("🚀 Starting Admin Panel API Server...")
+    
+    # Create database tables
+    create_tables()
+    print("✅ Database tables initialized")
+    
+    yield
+    
+    # Shutdown
+    print("🛑 Shutting down Admin Panel API Server...")
+
+app = FastAPI(
+    title="Admin Panel API - Cửa Hàng Minh Hà", 
+    description="Backend API for Minh Hà Admin Panel - VÕNG - RÈM - MÀN - GIÁ PHƠI - BÀN GHẾ", 
+    version="1.0.0",
+    docs_url="/docs",
+    redoc_url="/redoc",
+    lifespan=lifespan
+)
 
 # Cấu hình CORS
 app.add_middleware(
@@ -22,6 +59,74 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+# Trusted host middleware (optional, for production)
+if os.getenv("ENVIRONMENT") == "production":
+    app.add_middleware(
+        TrustedHostMiddleware,
+        allowed_hosts=["admin.minhha.com", "*.minhha.com", "localhost"]
+    )
+
+# Global exception handler
+@app.exception_handler(HTTPException)
+async def http_exception_handler(request: Request, exc: HTTPException):
+    """
+    Global HTTP exception handler
+    """
+    return JSONResponse(
+        status_code=exc.status_code,
+        content={
+            "success": False,
+            "message": exc.detail,
+            "error_code": f"HTTP_{exc.status_code}",
+            "path": str(request.url)
+        }
+    )
+
+@app.exception_handler(Exception)
+async def general_exception_handler(request: Request, exc: Exception):
+    """
+    Global exception handler for unhandled exceptions
+    """
+    return JSONResponse(
+        status_code=500,
+        content={
+            "success": False,
+            "message": "Internal server error",
+            "error_code": "INTERNAL_ERROR",
+            "path": str(request.url)
+        }
+    )
+
+# Health check endpoint
+@app.get("/health")
+async def health_check():
+    """
+    Health check endpoint
+    """
+    return {
+        "status": "healthy",
+        "service": "Admin Panel API",
+        "version": "1.0.0"
+    }
+
+# Root endpoint
+@app.get("/")
+async def root():
+    """
+    Root endpoint with API information
+    """
+    return {
+        "message": "Admin Panel API Server",
+        "description": "Backend API for Minh Hà Admin Panel",
+        "version": "1.0.0",
+        "docs": "/docs",
+        "redoc": "/redoc",
+        "health": "/health"
+    }
+
+# Include API routers
+app.include_router(auth_router, prefix="/api/v1")
 
 # Mount static files
 app.mount("/static", StaticFiles(directory="static"), name="static")
@@ -847,6 +952,24 @@ async def get_image(image_name: str):
         else:
             raise HTTPException(status_code=404, detail="Image not found")
 
+# Additional middleware for request logging (optional)
+@app.middleware("http")
+async def log_requests(request: Request, call_next):
+    """
+    Log all requests (optional middleware)
+    """
+    # You can add request logging here
+    response = await call_next(request)
+    return response
+
 if __name__ == "__main__":
     import uvicorn
-    uvicorn.run(app, host="0.0.0.0", port=12000)
+    
+    # Development server configuration
+    uvicorn.run(
+        "main:app",
+        host="0.0.0.0",
+        port=8000,
+        reload=True,
+        log_level="info"
+    )
